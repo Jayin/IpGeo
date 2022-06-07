@@ -1,0 +1,30 @@
+{
+    "name": "jayin/ipgeo",
+    "description": "A PHP package template repository.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jayin",
+            "email": "tonjayin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IpGeo\\": "src"
+        }
+    },
+    "extra": {},
+    "scripts": {
+        "test": "phpunit --colors"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests."
+    }
+}

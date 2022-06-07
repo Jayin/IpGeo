@@ -5,12 +5,13 @@
 
 namespace Tests;
 
+use IpGeo\Exception\IpGeoException;
 use IpGeo\IpGeo;
 use PHPUnit\Framework\TestCase;
 
 class TencentDriverTest extends TestCase
 {
-    function testGeo()
+    function _getIpGeo()
     {
         $ipGeo = new IpGeo();
         $ipGeo->setConfig([
@@ -26,10 +27,25 @@ class TencentDriverTest extends TestCase
                 ],
             ]
         ]);
+        return $ipGeo;
+    }
+
+    function testGeo()
+    {
+        $ipGeo = $this->_getIpGeo();
         $ip = '61.140.183.172';
-//        $info = $ipGeo->geo($ip);
         $info = $ipGeo->useDriver(IpGeo::DRIVER_TENCENT)->geo($ip);
-        var_dump($info);
+        var_dump(json_encode($info));
+        $this->assertNotEmpty($info);
+    }
+
+    function testEmptyIp()
+    {
+        $this->expectException(IpGeoException::class);
+        $this->expectExceptionMessage('IP不能为空');
+        $ipGeo = $this->_getIpGeo();
+        $ip = '';
+        $info = $ipGeo->useDriver(IpGeo::DRIVER_TENCENT)->geo($ip);
         $this->assertNotEmpty($info);
     }
 }

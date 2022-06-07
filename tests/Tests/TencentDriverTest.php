@@ -35,7 +35,6 @@ class TencentDriverTest extends TestCase
         $ipGeo = $this->_getIpGeo();
         $ip = '61.140.183.172';
         $info = $ipGeo->useDriver(IpGeo::DRIVER_TENCENT)->geo($ip);
-        var_dump(json_encode($info));
         $this->assertNotEmpty($info);
     }
 

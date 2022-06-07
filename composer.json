@@ -1,6 +1,6 @@
 {
     "name": "jayin/ipgeo",
-    "description": "A PHP package template repository.",
+    "description": "Get IP GEO",
     "license": "MIT",
     "authors": [
         {
